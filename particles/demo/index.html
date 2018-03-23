@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+  <link rel="stylesheet" media="screen" href="css/main.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- count particles -->
+
+<!-- particles.js container -->
+<div id="particles-js">
+  <div class="cover">
+    <h1 class="cover-text">Real-time data from handwashing locations</h1>
+    <div class="cover-date">AS OF MARCH 24, 2018</div>
+    <h1 class="cover-number numscroller"></h1>
+    <h1 class="cover-text2">TOTAL NUMBER OF HANDWASHES TODAY</h1>
+  </div>
+</div>
+
+<div class="page-header">Watch out! Have you had these encounters today?
+  <div class="underline"></div>
+</div>
+<div class="causes">
+  <div class="left-col">
+    <div class="image-placeholder handshake" data-aos="zoom-in-up">
+      <h1 class="head center">Shake hands</h1>
+    </div>
+    <div class="image-placeholder2 public" data-aos="zoom-in-up">
+      <h1 class="head2 center">Took public transportation</h1>
+    </div>
+  </div>
+  <div class="mid-col">
+     <div class="image-placeholder phone" data-aos="zoom-in-up" data-aos-delay="300">
+      <h1 class="head center">Used your phone</h1>
+    </div>
+    <div class="image-placeholder2 handrail" data-aos="zoom-in-up" data-aos-delay="300">
+      <h1 class="head2 center">Held the handrail</h1>
+    </div>
+  </div>
+  <div class="right-col">
+     <div class="image-placeholder sneeze" data-aos="zoom-in-up" data-aos-delay="600">
+      <h1 class="head center">Sneezed</h1>
+    </div>
+    <div class="image-placeholder2 toilet" data-aos="zoom-in-up" data-aos-delay="600">
+      <h1 class="head2 center">Used the toilet</h1>
+    </div>
+  </div>
+</div>
+
+<div class="why-wash">
+  <div class="page-header2">Why wash your hands?
+  <div class="underline"></div>
+  </div>
+  <div class="content-container">
+    <div class="image-1" data-aos="fade-right" data-aos-duration="800"></div>
+    <div class="image-2" data-aos="fade-left" data-aos-duration="800"></div>
+    <div class="image-3" data-aos="fade-right" data-aos-duration="800"></div>
+  </div>
+<!--   <div class="content-container">
+    <div class="image-2"></div>
+  </div>
+  <div class="content-container">
+    <div class="image-3"></div>
+  </div> -->
+</div>
+
+<div class="movement">
+  <div class="page-header">Be a part of the #SenseMeWash movement!
+  <div class="underline"></div>
+  <div class="number-container">
+    <div class="left-col2">
+      <div class="washrooms"></div>
+      <h1 class="numbers-text">People who did not wash hands at all</h1>
+    </div>
+    <div class="mid-col2">
+      <div class="water"></div>
+      <h1 class="numbers-text">People who wet their hands with water only</h1>
+    </div>
+    <div class="right-col2">
+      <div class="soap"></div>
+      <h1 class="numbers-text">People who actually wash with soap</h1>
+    </div>
+  </div>
+</div>
+
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/numscroller-1.0.js"></script>
+<script>
+
+AOS.init({
+  easing: 'ease',
+  delay: 100,
+});
+
+window.onload = function(){
+    $.ajax({
+        type: "GET",
+        url: "../../data.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+};
+
+var doorCount;
+var faucetCount;
+var soapCount;
+
+function processData(allText) {
+    var entries =allText.split(',');
+
+    doorCount = entries[0];
+    faucetCount = entries[1];
+    soapCount = entries[2];
+
+    var waterOnly = faucetCount - 2 * soapCount;
+    var didntWash = doorCount/2 - soapCount - waterOnly;
+
+    $(".washrooms").html(didntWash);
+    $(".water").html(waterOnly);
+    $(".soap").html(soapCount);
+    $(".cover-number").html(soapCount);
+}
+
+</script>
+
+<!-- stats.js -->
+
+</body>
+</html>

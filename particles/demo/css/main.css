@@ -1,0 +1,261 @@
+body {
+	background-color: white!important;
+}
+
+#particlas-js {
+	z-index: 9999;
+}
+
+.cover {
+	height: 500px;
+	width: 1000px;
+	background-color: transparent;
+	position:absolute;
+	top: 20%;
+	left: 15%;
+}
+
+.cover-stats {
+	background-color:transparent;
+	opacity: 0.8;
+	position:relative;
+	left:-50%;
+}
+
+.cover-text {
+	font-size: 48px;
+	color: #DEDEDE;
+	font-family: 'Proxima Nova';
+	text-align:center;
+	font-weight:400;
+	margin-bottom: 20px;
+}
+
+
+.cover-text2 {
+	font-size: 24px;
+	color: #DEDEDE;
+	font-family: 'Proxima Nova';
+	text-align:center;
+	font-weight:400;
+	margin:0px auto;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	width: 500px;
+	border-top: 2px solid #DEDEDE;
+}
+
+.cover-date {
+	font-size: 12px;
+	color: #DEDEDE;
+	font-family: 'Proxima Nova';
+	text-align:center;
+	font-weight:100;
+	width: 150px;
+	margin:0px auto;
+	border: 1px solid #DEDEDE;
+	padding: 10px;
+	border-radius: 25px;
+	margin-bottom: 50px;
+}
+
+.cover-number {
+	font-size: 144px;
+	color: #DEDEDE;
+	font-family: 'Proxima Nova';
+	text-align:center;
+	font-weight:400;
+	margin-bottom: 50px;
+}
+
+.causes {
+	display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 850px;
+    width: 100%;
+    justify-content: center;
+}
+
+.left-col {
+	height:850px;
+	width:25%;
+	background-color: white;
+}
+
+.image-placeholder {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background-color: grey;
+	margin: 0px auto;
+}
+
+.image-placeholder2 {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background-color: white;
+	margin: 0px auto;
+	margin-top: 150px;
+}
+
+.mid-col {
+	height:850px;
+	width:25%;
+	background-color: white;
+}
+
+.right-col {
+	height:850px;
+	width:25%;
+	background-color: white;
+}
+
+.center {
+	text-align:center;
+}
+
+.head {
+	padding-top: 320px;
+	font-size: 24px;
+	font-family: 'Proxima Nova';
+	font-weight: 400;
+}
+
+.head2 {
+	padding-top: 320px;
+	font-size: 24px;
+	font-family: 'Proxima Nova';
+	font-weight: 400;
+}
+
+.page-header {
+	height: 100px;
+	margin-top: 50px;
+	margin-left: 220px;
+	font-size: 36px;
+	color: #01005B;
+	font-family: 'Proxima Nova';
+}
+
+.page-header2 {
+	height: 100px;
+	margin-left: 220px;
+	padding-top:50px;
+	font-size: 36px;
+	color: #DEDEDE;
+	font-family: 'Proxima Nova';
+}
+
+.underline {
+	margin-top: 20px;
+	height:8px;
+	width: 60px;
+	background-color: #21D327;
+}
+
+.why-wash {
+	height: 1000px;
+	background: url('avery prof pic.jpg');
+	background-color:#343E48;
+}
+
+.content-container {
+	margin-left:200px;
+}
+
+.image-1 {
+	background: url('../../../images/why-wash.png') no-repeat;
+	background-size: 1040px auto;
+	height: 260px;
+}
+
+.image-2 {
+	background: url('../../../images/why-wash-2.png') no-repeat;
+	background-size: 1040px auto;
+	height: 275px;
+}
+
+.image-3 {
+	background: url('../../../images/why-wash-3.png') no-repeat;
+	background-size: 1040px auto;
+	height: 260px;
+}
+
+.handshake {
+	background:url(../../../causes/handshake.png);
+	background-size: cover;
+}
+
+.public {
+	background:url(../../../causes/public-transpo.png);
+	background-size: cover;
+}
+
+.phone {
+	background:url(../../../causes/using-gadget.png);
+	background-size: cover;
+}
+
+.handrail {
+	background:url(../../../causes/rail.png);
+	background-size: cover;
+}
+
+.sneeze {
+	background:url(../../../causes/sneezing.png);
+	background-size: cover;
+}
+
+.toilet {
+	background:url(../../../causes/toilet.png);
+	background-size: cover;
+}
+
+.movement {
+	height: 350px;
+}
+
+.number-container {
+	display: flex;
+    flex-direction: row;
+    margin-left:50px;
+}
+
+.left-col2 {
+	height:375px;
+	width:25%;
+}
+
+.mid-col2 {
+	height:375px;
+	width:25%;
+}
+
+.right-col2 {
+	height:375px;
+	width:25%;
+}
+
+.numbers-text {
+	font-size: 20px;
+	font-family: 'Proxima Nova';
+	font-weight: 400;
+	text-align: center;
+	margin-top: 30px;
+	padding: 0px 20px 0px 20px;
+	line-height: 28px;
+}
+
+.washrooms, .water, .soap {
+	height: 175px;
+	width: 200px;
+	border-bottom: 3px solid #D8D8D8;
+	margin:0px auto;
+	margin-top: 50px;
+	font-size: 144px;
+	font-family: 'Proxima Nova';
+	text-align:center;
+}
+
