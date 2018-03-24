@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>particles.js</title>
+  <title>Sense Me Wash Movement</title>
   <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
   <div class="cover">
     <h1 class="cover-text">Real-time data from handwashing locations</h1>
     <div class="cover-date">AS OF MARCH 24, 2018</div>
-    <h1 class="cover-number numscroller"></h1>
+    <h1 class="cover-number" id="cover-number" data-min="0" data-delay='5' data-increment='5'></h1>
     <h1 class="cover-text2">TOTAL NUMBER OF HANDWASHES TODAY</h1>
   </div>
 </div>
@@ -66,12 +66,6 @@
     <div class="image-2" data-aos="fade-left" data-aos-duration="800"></div>
     <div class="image-3" data-aos="fade-right" data-aos-duration="800"></div>
   </div>
-<!--   <div class="content-container">
-    <div class="image-2"></div>
-  </div>
-  <div class="content-container">
-    <div class="image-3"></div>
-  </div> -->
 </div>
 
 <div class="movement">
@@ -79,18 +73,25 @@
   <div class="underline"></div>
   <div class="number-container">
     <div class="left-col2">
-      <div class="washrooms"></div>
+      <div class="washrooms" data-aos="fade-up"></div>
       <h1 class="numbers-text">People who did not wash hands at all</h1>
     </div>
-    <div class="mid-col2">
+    <div class="mid-col2" data-aos="fade-up" data-aos-delay="300">
       <div class="water"></div>
       <h1 class="numbers-text">People who wet their hands with water only</h1>
     </div>
-    <div class="right-col2">
+    <div class="right-col2" data-aos="fade-up" data-aos-delay="600">
       <div class="soap"></div>
       <h1 class="numbers-text">People who actually wash with soap</h1>
     </div>
   </div>
+</div>
+</div>
+
+<div class="footer">
+  <h1 class="cover-text" style="padding-top: 75px;" data-aos="fade">Have you washed your hands today?</h1>
+  <h1 class="footer-text" data-aos="fade" data-aos-delay="900">Join the movement with</h1>
+  <img src="http://safeguard.5150philippines.com/v2/wp-content/uploads/2015/02/logo-safeguard.png" style="display:block; margin:0px auto;" data-aos="flip-left" data-aos-delay="1800" data-os-duration="2000"></img>
 </div>
 
 <!-- scripts -->
@@ -115,12 +116,24 @@ window.onload = function(){
      });
 };
 
+setInterval(function(){ 
+  $.ajax({
+      type: "GET",
+      url: "../../data.csv",
+      dataType: "text",
+      success: function(data) {
+        processData(data);
+        console.log('a');}
+   });
+
+}, 1000);
+
 var doorCount;
 var faucetCount;
 var soapCount;
 
 function processData(allText) {
-    var entries =allText.split(',');
+    var entries = allText.split(',');
 
     doorCount = entries[0];
     faucetCount = entries[1];
@@ -129,11 +142,23 @@ function processData(allText) {
     var waterOnly = faucetCount - 2 * soapCount;
     var didntWash = doorCount/2 - soapCount - waterOnly;
 
-    $(".washrooms").html(didntWash);
-    $(".water").html(waterOnly);
+    $(".washrooms").html(Math.floor(didntWash));
+    $(".water").html(Math.floor(waterOnly));
     $(".soap").html(soapCount);
     $(".cover-number").html(soapCount);
 }
+
+console.log($(".cover-number").data("max"));
+
+// setTimeout(function(),)
+// $(".cover-number").attr('data-max', soapCount);
+document.getElementById("cover-number").setAttribute("data-max", String(soapCount));
+
+console.log($(".cover-number").attr("data-max"));
+
+// $(".cover-number").removeData("max");
+
+setTimeout(function(){ $(".cover-number").addClass("numscroller"); }, 1000);
 
 </script>
 
